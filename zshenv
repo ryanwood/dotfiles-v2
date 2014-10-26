@@ -1,0 +1,1 @@
+/Users/ryanwood/.homesick/repos/dotfiles/home/.zshenv

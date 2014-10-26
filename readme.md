@@ -1,24 +1,14 @@
 Ryan's dotfiles
 ===================
 
-Based on [thoughtbot dotfiles](https://github.com/thoughtbot/dotfiles)
-
-Requirements
-------------
-
-Set zsh as your login shell:
-
-    chsh -s $(which zsh)
+Roughly based on [thoughtbot dotfiles](https://github.com/thoughtbot/dotfiles)
 
 Install
 -------
 
-Clone onto your laptop:
+Clone the dotfiles:
 
-    git clone git://github.com/ryanwood/dotfiles.git
-
-(Or, [fork and keep your fork
-updated](http://robots.thoughtbot.com/keeping-a-github-fork-updated)).
+    git clone git://github.com/ryanwood/dotfiles.git ~/.dotfiles
 
 Install [rcm](https://github.com/thoughtbot/rcm):
 

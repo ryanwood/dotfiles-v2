@@ -1,74 +1,70 @@
-""
-"" Basic Setup
-""
+execute pathogen#infect()
 
-set nocompatible      " Use vim, no vi defaults
-set number            " Show line numbers
-set ruler             " Show line and column number
-syntax enable         " Turn on syntax highlighting allowing local overrides
-set encoding=utf-8    " Set default encoding to UTF-8
+set nocompatible                  " Must come first because it changes other options.
 
-""
-"" Whitespace
-""
+syntax enable                     " Turn on syntax highlighting.
+filetype plugin indent on         " Turn on file type detection.
 
-set nowrap                        " don't wrap lines
-set tabstop=2                     " a tab is two spaces
-set shiftwidth=2                  " an autoindent (with <<) is two spaces
-set expandtab                     " use spaces, not tabs
-set list                          " Show invisible characters
-set backspace=indent,eol,start    " backspace through everything in insert mode
+runtime macros/matchit.vim        " Load the matchit plugin.
 
-if exists("g:enable_mvim_shift_arrow")
-  let macvim_hig_shift_movement = 1 " mvim shift-arrow-keys
-endif
+set showcmd                       " Display incomplete commands.
+set showmode                      " Display the mode you're in.
 
-" List chars
-set listchars=""                  " Reset the listchars
-set listchars=tab:\ \             " a tab should display as "  ", trailing whitespace as "."
-set listchars+=trail:.            " show trailing spaces as dots
-set listchars+=extends:>          " The character to show in the last column when wrap is
-                                  " off and the line continues beyond the right of the screen
-set listchars+=precedes:<         " The character to show in the last column when wrap is
-                                  " off and the line continues beyond the left of the screen
+set backspace=indent,eol,start    " Intuitive backspacing.
 
-""
-"" Searching
-""
+set hidden                        " Handle multiple buffers better.
 
-set hlsearch    " highlight matches
-set incsearch   " incremental searching
-set ignorecase  " searches are case insensitive...
-set smartcase   " ... unless they contain at least one capital letter
+set wildmenu                      " Enhanced command line completion.
+set wildmode=list:longest         " Complete files like a shell.
 
-""
-"" Wild settings
-""
+set ignorecase                    " Case-insensitive searching.
+set smartcase                     " But case-sensitive if expression contains a capital letter.
 
-" TODO: Investigate the precise meaning of these settings
-" set wildmode=list:longest,list:full
+set number                        " Show line numbers.
+set ruler                         " Show cursor position.
 
-" Disable output and VCS files
-set wildignore+=*.o,*.out,*.obj,.git,*.rbc,*.rbo,*.class,.svn,*.gem
+set incsearch                     " Highlight matches as you type.
+set hlsearch                      " Highlight matches.
 
-" Disable archive files
-set wildignore+=*.zip,*.tar.gz,*.tar.bz2,*.rar,*.tar.xz
+set wrap                          " Turn on line wrapping.
+set scrolloff=3                   " Show 3 lines of context around the cursor.
 
-" Ignore bundler and sass cache
-set wildignore+=*/vendor/gems/*,*/vendor/cache/*,*/.bundle/*,*/.sass-cache/*
+set title                         " Set the terminal's title
 
-" Ignore librarian-chef, vagrant, test-kitchen and Berkshelf cache
-set wildignore+=*/tmp/librarian/*,*/.vagrant/*,*/.kitchen/*,*/vendor/cookbooks/*
+set visualbell                    " No beeping.
 
-" Ignore rails temporary asset caches
-set wildignore+=*/tmp/cache/assets/*/sprockets/*,*/tmp/cache/assets/*/sass/*
+set nobackup                      " Don't make a backup before overwriting a file.
+set nowritebackup                 " And again.
+set directory=$HOME/.vim/tmp//,.  " Keep swap files in one location
 
-" Disable temp and backup files
-set wildignore+=*.swp,*~,._*
+set tabstop=2                    " Global tab width.
+set shiftwidth=2                 " And again, related.
+set expandtab                    " Use spaces instead of tabs
 
-""
-"" Backup and swap files
-""
+set laststatus=2                  " Show the status line all the time
 
-set backupdir^=~/.vim/_backup//    " where to put backup files.
-set directory^=~/.vim/_temp//      " where to put swap files.
+" Useful status information at bottom of screen
+" set statusline=[%n]\ %<%.99f\ %h%w%m%r%y\ %{exists('*CapsLockStatusline')?CapsLockStatusline():''}%=%-16(\ %l,%c-%v\ %)%P
+
+" Tab mappings.
+map <leader>tt :tabnew<cr>
+map <leader>te :tabedit
+map <leader>tc :tabclose<cr>
+map <leader>to :tabonly<cr>
+map <leader>tn :tabnext<cr>
+map <leader>tp :tabprevious<cr>
+map <leader>tf :tabfirst<cr>
+map <leader>tl :tablast<cr>
+map <leader>tm :tabmove
+
+" Uncomment to use Jamis Buck's file opening plugin
+"map <Leader>t :FuzzyFinderTextMate<Enter>
+
+" Automatic fold settings for specific files. Uncomment to use.
+" autocmd FileType ruby setlocal foldmethod=syntax
+" autocmd FileType css  setlocal foldmethod=indent shiftwidth=2 tabstop=2
+
+" Colors
+set background=light
+let g:solarized_termcolors=256
+colorscheme solarized
