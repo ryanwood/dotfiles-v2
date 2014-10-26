@@ -1,0 +1,36 @@
+alias reload="source ~/.zshrc"
+
+# Projects
+alias cdm='cd ~/projects/moonclerk/app.moonclerk.com'
+alias cdd='cd ~/projects/deerlab/app.deerlab.com'
+
+alias mig='rake db:migrate db:test:clone'
+alias rst='touch tmp/restart.txt'
+alias rsd='rake staging deploy'
+alias rsdf='rake staging deploy:force'
+alias rcs='rails console --sandbox'
+
+alias hrcp='heroku run console -r production'
+alias hrcs='heroku run console -r staging'
+
+alias du='du -k -d 1 $argv'
+alias s='git status -sb $argv; return 0'
+alias d='gd $argv'
+alias v='mvim $argv'
+
+alias df='df -kh $argv'
+alias reload_webkit='osascript -e 'tell application "WebKit" to do JavaScript "window.location.reload()" in front document''
+alias tigs='tig status $argv'
+
+alias be='bundle exec'
+
+alias add_alias='mate -w ~/.zsh/aliases; cd ~/.dot-files; ga files/.zsh/aliases; gc'
+alias git_alias='mate -w ~/.zsh/git_aliases; cd ~/.dot-files; ga files/.zsh/git_aliases; gc'
+
+# Fixes brackets in zsh
+# https://github.com/imathis/octopress/issues/117
+# alias rake="noglob rake"
+
+alias ds='NO_CONFIRM=1 ./deploy staging'
+alias dp='./deploy production'
+alias dpb='BACKUP=1 ./deploy production'
