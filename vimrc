@@ -19,16 +19,18 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 " NeoBundle 'Shougo/neosnippet.vim'
 " NeoBundle 'Shougo/neosnippet-snippets'
 NeoBundle 'tpope/vim-fugitive'
+NeoBundle 'tpope/vim-commentary'
+NeoBundle 'tpope/vim-unimpaired'
+NeoBundle 'tpope/vim-rails'
 NeoBundle 'sjl/gundo.vim'
 NeoBundle 'kien/ctrlp.vim'
 NeoBundle 'Lokaltog/vim-easymotion'
 NeoBundle 'edsono/vim-matchit'
 NeoBundle 'mileszs/ack.vim'
-NeoBundle 'tpope/vim-commentary'
 NeoBundle 'itchyny/lightline.vim'
 NeoBundle 'jeetsukumaran/vim-buffergator'
-NeoBundle 'tpope/vim-unimpaired'
 NeoBundle 'terryma/vim-multiple-cursors'
+NeoBundle 'skalnik/vim-vroom'
 
 " Template Support
 NeoBundle 'kchmck/vim-coffee-script'
@@ -340,6 +342,12 @@ else
   map  <C-9> 9gt
   imap <C-9> <Esc>9gt
 endif
+
+" }}}
+" VRoom {{{
+
+let g:vroom_use_spring = 1
+let g:vroom_use_binstubs = 1
 
 " }}}
 " AutoGroups {{{
