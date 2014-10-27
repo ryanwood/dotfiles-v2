@@ -56,6 +56,7 @@ NeoBundleCheck
 
 syntax enable           " enable syntax processing
 colorscheme badwolf
+" colorscheme solarized
 
 " }}}
 " Misc {{{
@@ -84,6 +85,7 @@ set cursorline          " highlight current line
 set wildmenu            "set lazyredraw
 set showmatch           " higlight matching parenthesis
 set visualbell          " No beeping.
+set ruler               " Show cursor position (required for lightline)
 
 " }}}
 " Searching {{{
@@ -138,7 +140,7 @@ nnoremap <leader>u :GundoToggle<CR>
 nnoremap <leader>h :A<CR>
 nnoremap <leader>ev :vsp $MYVIMRC<CR>
 nnoremap <leader>ez :vsp ~/.zshrc<CR>
-" nnoremap <leader>sv :source $MYVIMRC<CR>
+nnoremap <leader>sv :source $MYVIMRC<CR>
 nnoremap <leader>l :call ToggleNumber()<CR>
 nnoremap <leader><space> :noh<CR>
 " nnoremap <leader>s :mksession<CR>
@@ -201,6 +203,7 @@ let g:buffergator_show_full_directory_path = 0
 " let g:ctrlp_custom_ignore = '\vbuild/|dist/|venv/|target/|\.(o|swp|pyc|egg)$'
 
 " }}}
+" 
 " NerdCommenter {{{
 
 let NERDSpaceDelims=1
