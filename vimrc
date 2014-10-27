@@ -88,7 +88,7 @@ set wildmenu            "set lazyredraw
 set showmatch           " higlight matching parenthesis
 set visualbell          " No beeping.
 set ruler               " Show cursor position (required for lightline)
-" set laststatus=2        " Show the status line all the time
+set laststatus=2        " Show the status line all the time
 
 " }}}
 " Searching {{{
@@ -140,8 +140,9 @@ nnoremap gV `[v`]
 
 let mapleader=","
 
-nnoremap <leader>m :silent make\|redraw!\|cw<CR>
-nnoremap <leader>w :NERDTree<CR>
+nnoremap <leader>c :Commentary<CR>
+" nnoremap <leader>m :silent make\|redraw!\|cw<CR>
+" nnoremap <leader>w :NERDTree<CR>
 nnoremap <leader>u :GundoToggle<CR>
 nnoremap <leader>h :A<CR>
 nnoremap <leader>ev :vsp $MYVIMRC<CR>
