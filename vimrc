@@ -28,6 +28,7 @@ NeoBundle 'scrooloose/nerdcommenter'
 NeoBundle 'itchyny/lightline.vim'
 NeoBundle 'jeetsukumaran/vim-buffergator'
 NeoBundle 'tpope/vim-unimpaired'
+NeoBundle 'terryma/vim-multiple-cursors'
 
 " Template Support
 NeoBundle 'kchmck/vim-coffee-script'
@@ -118,7 +119,10 @@ set foldlevelstart=10    " start with fold level of 1
 "nnoremap E $
 "nnoremap $ <nop>
 "nnoremap ^ <nop>
+"
+" Visually select the text that was last edited/pasted
 nnoremap gV `[v`]
+
 " onoremap an :<c-u>call <SID>NextTextObject('a', 'f')<cr>
 " xnoremap an :<c-u>call <SID>NextTextObject('a', 'f')<cr>
 " onoremap in :<c-u>call <SID>NextTextObject('i', 'f')<cr>
@@ -203,7 +207,16 @@ let g:buffergator_show_full_directory_path = 0
 " let g:ctrlp_custom_ignore = '\vbuild/|dist/|venv/|target/|\.(o|swp|pyc|egg)$'
 
 " }}}
-" 
+" Fugitive {{{
+
+nmap <leader>gb :Gblame<CR>
+nmap <leader>gs :Gstatus<CR>
+nmap <leader>gd :Gdiff<CR>
+nmap <leader>gl :Glog<CR>
+nmap <leader>gc :Gcommit<CR>
+nmap <leader>gp :Git push<CR>
+
+" }}}
 " NerdCommenter {{{
 
 let NERDSpaceDelims=1
