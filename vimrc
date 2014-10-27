@@ -27,6 +27,11 @@ NeoBundle 'mileszs/ack.vim'
 NeoBundle 'scrooloose/nerdcommenter'
 NeoBundle 'itchyny/lightline.vim'
 NeoBundle 'jeetsukumaran/vim-buffergator'
+" NeoBundle 'tpope/vim-unimpaired'
+
+" Template Support
+NeoBundle 'kchmck/vim-coffee-script'
+NeoBundle 'slim-template/vim-slim'
 
 " Colors
 NeoBundle 'sjl/badwolf'
@@ -75,15 +80,16 @@ set autoindent
 
 set number              " show line numbers
 set showcmd             " show command in bottom bar
-set nocursorline          " highlight current line
-set wildmenu
-"set lazyredraw
+set cursorline          " highlight current line
+set wildmenu            "set lazyredraw
 set showmatch           " higlight matching parenthesis
+set visualbell          " No beeping.
 
 " }}}
 " Searching {{{
 
 set ignorecase          " ignore case when searching
+set smartcase           " But case-sensitive if expression contains a capital letter.
 set incsearch           " search as characters are entered
 set hlsearch            " highlight all matches
 
@@ -100,8 +106,10 @@ set foldnestmax=10      " max 10 depth
 set foldenable          " don't fold files by default on open
 nnoremap <space> za
 set foldlevelstart=10    " start with fold level of 1
+
 " }}}
 " Line Shortcuts {{{
+ 
 " nnoremap j gj
 " nnoremap k gk
 "nnoremap B ^
@@ -133,16 +141,16 @@ nnoremap <leader>ez :vsp ~/.zshrc<CR>
 nnoremap <leader>sv :source $MYVIMRC<CR>
 nnoremap <leader>l :call ToggleNumber()<CR>
 nnoremap <leader><space> :noh<CR>
-nnoremap <leader>s :mksession<CR>
-nnoremap <leader>a :Ag 
-nnoremap <leader>c :SyntasticCheck<CR>:Errors<CR>
-nnoremap <leader>1 :set number!<CR>
-nnoremap <leader>d :Make! 
-nnoremap <leader>r :call RunTestFile()<CR>
-nnoremap <leader>g :call RunGoFile()<CR>
-vnoremap <leader>y "+y
-vmap v <Plug>(expand_region_expand)
-vmap <C-v> <Plug>(expand_region_shrink)
+" nnoremap <leader>s :mksession<CR>
+" nnoremap <leader>a :Ag 
+" nnoremap <leader>c :SyntasticCheck<CR>:Errors<CR>
+" nnoremap <leader>1 :set number!<CR>
+" nnoremap <leader>d :Make! 
+" nnoremap <leader>r :call RunTestFile()<CR>
+" nnoremap <leader>g :call RunGoFile()<CR>
+" vnoremap <leader>y "+y
+" vmap v <Plug>(expand_region_expand)
+" vmap <C-v> <Plug>(expand_region_shrink)
 inoremap jk <esc>
 
 " Easy window switching
@@ -155,6 +163,18 @@ map <c-x> <c-w>x
 " More natural window creation
 set splitbelow
 set splitright
+
+" Tab mappings
+map <leader>tt :tabnew<cr>
+map <leader>te :tabedit
+map <leader>tc :tabclose<cr>
+map <leader>to :tabonly<cr>
+map <leader>tn :tabnext<cr>
+map <leader>tp :tabprevious<cr>
+map <leader>tf :tabfirst<cr>
+map <leader>tl :tablast<cr>
+map <leader>tm :tabmove
+
 
 
 " }}}
@@ -190,11 +210,6 @@ if has("gui_macvim") && has("gui_running")
 else
   map <leader> <plug>NERDCommenterToggle<CR>
 endif
-
-" }}}
-" NERDTree {{{
-
-let NERDTreeIgnore = ['\.pyc$', 'build', 'venv', 'egg', 'egg-info/', 'dist', 'docs']
 
 " }}}
 " MacVim {{{
@@ -339,28 +354,6 @@ function! ToggleNumber()
         set relativenumber
     endif
 endfunc
-
-function! RunTestFile()
-    if(&ft=='python')
-        exec ":!" . ". venv/bin/activate; nosetests " .bufname('%') . " --stop"
-    endif
-endfunction
-
-function! RunGoFile()
-    if(&ft=='go')
-        exec ":new|0read ! go run " . bufname('%')
-    endif
-endfunction
-
-function! RunTestsInFile()
-    if(&ft=='php')
-        :execute "!" . "/Users/dblack/pear/bin/phpunit -d memory_limit=512M -c /usr/local/twilio/src/php/tests/config.xml --bootstrap /usr/local/twilio/src/php/tests/bootstrap.php " . bufname('%') . ' \| grep -v Configuration \| egrep -v "^$" '
-    elseif(&ft=='go')
-        exec ":!gp test"
-    elseif(&ft=='python')
-        exec ":read !" . ". venv/bin/activate; nosetests " . bufname('%') . " --nocapture"
-    endif
-endfunction
 
 " strips trailing whitespace at the end of files. this
 " is called on buffer write in the autogroup above.
