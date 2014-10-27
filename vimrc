@@ -27,7 +27,7 @@ NeoBundle 'mileszs/ack.vim'
 NeoBundle 'scrooloose/nerdcommenter'
 NeoBundle 'itchyny/lightline.vim'
 NeoBundle 'jeetsukumaran/vim-buffergator'
-" NeoBundle 'tpope/vim-unimpaired'
+NeoBundle 'tpope/vim-unimpaired'
 
 " Template Support
 NeoBundle 'kchmck/vim-coffee-script'
