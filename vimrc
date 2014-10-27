@@ -1,5 +1,5 @@
-" Ryan Wood
 " NeoBundle {{{
+" Ryan Wood
 "
 if has('vim_starting')
   set nocompatible               " Be iMproved
@@ -21,6 +21,7 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'tpope/vim-commentary'
 NeoBundle 'tpope/vim-unimpaired'
+NeoBundle 'tpope/vim-endwise'
 NeoBundle 'tpope/vim-rails'
 NeoBundle 'sjl/gundo.vim'
 NeoBundle 'kien/ctrlp.vim'
