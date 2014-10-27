@@ -24,7 +24,7 @@ NeoBundle 'kien/ctrlp.vim'
 NeoBundle 'Lokaltog/vim-easymotion'
 NeoBundle 'edsono/vim-matchit'
 NeoBundle 'mileszs/ack.vim'
-NeoBundle 'scrooloose/nerdcommenter'
+NeoBundle 'tpope/vim-commentary'
 NeoBundle 'itchyny/lightline.vim'
 NeoBundle 'jeetsukumaran/vim-buffergator'
 NeoBundle 'tpope/vim-unimpaired'
@@ -76,6 +76,7 @@ set modelines=1
 filetype indent on
 filetype plugin on
 set autoindent
+set scrolloff=3         " Show 3 lines of context around the cursor.
 
 " }}}
 " UI Layout {{{
@@ -87,6 +88,7 @@ set wildmenu            "set lazyredraw
 set showmatch           " higlight matching parenthesis
 set visualbell          " No beeping.
 set ruler               " Show cursor position (required for lightline)
+" set laststatus=2        " Show the status line all the time
 
 " }}}
 " Searching {{{
@@ -199,6 +201,9 @@ let g:buffergator_show_full_directory_path = 0
 " let g:buffergator_split_size = 50%
 
 " }}}
+" Commentary {{{
+autocmd FileType slim set commentstring=/\ %s
+" }}}
 " CtrlP {{{
 
 " let g:ctrlp_match_window = 'bottom,order:ttb'
@@ -219,13 +224,13 @@ nmap <leader>gp :Git push<CR>
 " }}}
 " NerdCommenter {{{
 
-let NERDSpaceDelims=1
-if has("gui_macvim") && has("gui_running")
-  map  <D-/> <plug>NERDCommenterToggle
-  imap <D-/> <Esc><plug>NERDCommenterToggle
-else
-  map <leader> <plug>NERDCommenterToggle<CR>
-endif
+" let NERDSpaceDelims=1
+" if has("gui_macvim") && has("gui_running")
+"   map  <D-/> <plug>NERDCommenterToggle
+"   imap <D-/> <Esc><plug>NERDCommenterToggle
+" else
+"   map <leader> <plug>NERDCommenterToggle<CR>
+" endif
 
 " }}}
 " MacVim {{{
